@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Linkando Fontes -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-name">
+        <a href="#"class = "logo"><img src="../images/logocopy.png" alt="Logomarca! FariasStore"></a>
+        <a href="index.html"class="name">Farias Store✨</a>
+        </div>
+
+        <ul class="navmenu" >
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="../Pages/produtos.html">Produtos</a></li>
+            <li><a href="contact2.html">Contatos</a></li>
+        </ul>
+        
+        <div class="nav-icons">
+            <div class="busca">
+                <form action="" id="search-box">
+                    <input type="search" id="search-box2" placeholder="Buscar">
+                    <a href="#"><i class='bx bx-search'></i></a>
+                </form>
+            </div>
+            <a href="login.html"><i class='bx bx-user'></i></a>
+            <a href="../cart/cart.html"><i class='bx bx-cart'></i></a>
+
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    <div class="container-registro">
+        <form id="contact" onsubmit="alert('opaa')" action="" method="POST">
+            <img src="../images/logocopy.png" alt="" class="logo-contact">
+            <fieldset>
+                <h5>Usuário</h5>
+                <input placeholder="Insira seu usuário" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <h5>Email</h5>
+                <input placeholder="Insira seu Email" type="email" tabindex="2" required>
+            </fieldset>
+            <fieldset>
+                <h5>Senha</h5>
+                <input placeholder="Insira sua senha" type="tel" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <h5>Confirme sua Senha</h5>
+                <input placeholder="Insira sua senha" type="tel" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit"   id="contact-submit">Enviar</button>
+                <a class= "fazer-login" href = "login.html">Fazer Login</a>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

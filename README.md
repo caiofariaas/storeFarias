@@ -1,2 +1,0 @@
-# storeFarias
-## Projeto integrador - SENAI

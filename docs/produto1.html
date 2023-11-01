@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tn</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="style.css">
+
 
     <!-- Linkando Fontes -->
 
@@ -18,14 +19,14 @@
 <body>
     <header>
         <div class="logo-name">
-        <a href="#"class = "logo"><img src="../images/logocopy.png" alt="Logomarca! FariasStore"></a>
-        <a href="../Pages/index.html"class="name">Farias Store✨</a>
+        <a href="#"class = "logo"><img src="./images/logocopy.png" alt="Logomarca! FariasStore"></a>
+        <a href="index.html"class="name">Farias Store✨</a>
         </div>
 
         <ul class="navmenu" >
-            <li><a href="../Pages/index.html">Inicio</a></li>
-            <li><a href="../Pages/produtos.html">Produtos</a></li>
-            <li><a href="../Pages/contact2.html">Contatos</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="contact2.html">Contatos</a></li>
         </ul>
         
         <div class="nav-icons">
@@ -36,33 +37,31 @@
                 </form>
             </div>
             <a href="login.html"><i class='bx bx-user'></i></a>
-            <a href="../cart/cart.html"><i class='bx bx-cart'></i></a>
+            <a href="cart.html"><i class='bx bx-cart'></i></a>
 
-            <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
 
     <div class="flex-box">
         <div class="left">
             <div class="big-img">
-                <img src="../images/Tenis/Tn' 1 Chargers/TN Chargers (5).jpg" alt="">
+                <img src="./images/Tenis/Tn' 1 Black and white/TN1 BLACK AND WHITE (1).jpg" alt="">
             </div>
             <div class="imagess">
                 <div class="small-img">
-                    <img src="../images/Tenis/Tn' 1 Chargers/TN Chargers (5).jpg" onclick="showImg(this.src)" alt="">
+                    <img src="./images/Tenis/Tn' 1 Black and white/TN1 BLACK AND WHITE (1).jpg" onclick="showImg(this.src)" alt="">
                 </div>
                 <div class="small-img">
-                    <img src="../images/Tenis/Tn' 1 Chargers/TN Chargers (4).jpg" onclick="showImg(this.src)" alt="">
+                    <img src="./images/Tenis/Tn' 1 Black and white/TN1 BLACK AND WHITE (3).jpg" onclick="showImg(this.src)" alt="">
                 </div>
                 <div class="small-img">
-                    <img src="../images/Tenis/Tn' 1 Chargers/TN Chargers (3).jpg" onclick="showImg(this.src)" alt="">
+                    <img src="./images/Tenis/Tn' 1 Black and white/TN1 BLACK AND WHITE (4).jpg" onclick="showImg(this.src)" alt="">
                 </div>
                 <div class="small-img">
-                    <img src="../images/Tenis/Tn' 1 Chargers/TN Chargers (2).jpg" onclick="showImg(this.src)" alt="">
+                    <img src="./images/Tenis/Tn' 1 Black and white/TN1 BLACK AND WHITE (2).jpg" onclick="showImg(this.src)" alt="">
                 </div>
             </div>
         </div>
-
         <div class="right">
             <div class="name-prod">
                 <h3>Air Max Plus Tn'1 Black and White</h3>
@@ -94,22 +93,6 @@
         </div>
     </div>    
 
-    <script>
-        function mostrarSelecao() {
-          const tamanhoSelecionado = document.getElementById('tamanho').value;
-          alert('Você selecionou o tamanho ' + tamanhoSelecionado);
-        }
-      </script>
-
-
-    <script>
-        let bigImg = document.querySelector('.big-img img');
-
-        function showImg (pic){
-            bigImg.src = pic;
-        }
-    </script>
-
     <!-- Footer -->
 
     <section class="footer">
@@ -128,7 +111,7 @@
             <div>
                 <h3>Sobre nós</h3>
                 <br>
-                <p class="32">História da loja</p>
+                <a href="sobrenos.html" class="sobre-nos">História da loja</a>
             </div>
             <div>
                 <h3>Redes Sociais</h3>
@@ -137,5 +120,11 @@
             </div>
         </div>
 </section>
+<script>
+    function showImg (pic){
+    let bigImg = document.querySelector('.big-img img');
+    bigImg.src = pic;
+  }
+</script>
 </body>
 </html>

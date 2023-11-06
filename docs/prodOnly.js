@@ -1,3 +1,12 @@
-import { mostrarSelecao } from "./funcoes.js";
+import { catalogo } from "./script.js";
+import { carregarProduto, findProduct,} from "./funcoes.js";
+let ID = localStorage.getItem('prodID')
+console.log(ID)
 
-mostrarSelecao();
+let item = findProduct(catalogo,ID)
+
+
+const prods = document.querySelector(".flex-box")
+
+carregarProduto(item, prods)
+

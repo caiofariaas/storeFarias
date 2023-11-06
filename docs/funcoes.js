@@ -9,8 +9,8 @@ export function mostrarProducts(targetElement, home) {
         }
 
         let cardProd = `
-            <div class="row">
-                <a href="produto${i + 1}.html"><img src="${prod.img}"></a>
+            <div class="row" id="${prod.id}">
+                <a href="produtoUnic.html"><img src="${prod.img}" id="${prod.id}"></a>
                 <div class="product-text">
                     <h5>New</h5>
                 </div>
@@ -77,4 +77,78 @@ export function totalCart(){
     right_bar.innerHTML += cart_total;
 }
 
-// Mostrar seleção de tamanhos - prodOnly.js
+// Produto único JS
+
+export function handleClick(){
+    let produtos = document.querySelectorAll("div.row")
+    console.log(produtos)
+ 
+    produtos.forEach(produto => produto.addEventListener('click', (evento)=>{
+ 
+        let idProduto = evento.target.id
+        localStorage.setItem('prodID', idProduto)
+    }))
+}
+
+export function findProduct(produtos, prodID){
+    let produto = produtos.find(prod => prod.id == prodID)
+    console.log(produto)
+    return produto
+}
+
+//função para mostrar a pág do produto escolhido
+
+export function carregarProduto(item){
+    console.log(item)
+    const container = document.querySelector("#flex-boxx")
+
+    let html = `<div class="left">
+    <div class="big-img">
+        <img src="${item.img}" alt="">
+    </div>
+    <div class="imagess">
+        <div class="small-img">
+            <img src="${item.img}" onclick="showImg(this.src)" alt="">
+        </div>
+        <div class="small-img">
+            <img src="${item.img3}" onclick="showImg(this.src)" alt="">
+        </div>
+        <div class="small-img">
+            <img src="${item.img4}" onclick="showImg(this.src)" alt="">
+        </div>
+        <div class="small-img">
+            <img src="${item.img2}" onclick="showImg(this.src)" alt="">
+        </div>
+    </div>
+</div>
+<div class="right">
+    <div class="name-prod">
+        <h3>${item.nomeProd}</h3>
+        <div class="price-prod">
+            <p>R$${item.precoProd}</p>
+        </div>
+        <div class="tamanhos">
+            <select id="tamanho">
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+              </select>
+        </div>
+        <div class="comprarr">
+            <a href="#" class="button">Comprar</a>
+        </div>  
+        <div class="text-product">
+            <p>${item.descProd}</p>
+        </div>
+    </div>
+
+</div>`
+    container.innerHTML = html
+}

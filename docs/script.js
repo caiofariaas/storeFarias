@@ -14,7 +14,7 @@ export const catalogo = [{
 {
     id: 2,
     nomeProd: "Air max plus Tn' Chargers",
-    descProd: "bla",
+    descProd: "Leve sua atitude ao máximo no Nike Air Max Plus. uma experiência Air que oferece estabilidade e sustentação premium com um amortecimento inacreditável.",
     precoProd: 295.00,
     img: "./images/Tenis/Tn' 1 Chargers/TN Chargers (5).jpg",
     img2: "./images/Tenis/Tn' 1 Chargers/TN Chargers (5).jpg",
@@ -27,7 +27,7 @@ export const catalogo = [{
 {
     id: 3,
     nomeProd: "Air max 95 'NEON' ",
-    descProd: "X",
+    descProd: "Leve sua atitude ao máximo no Nike Air Max Plus. uma experiência Air que oferece estabilidade e sustentação premium com um amortecimento inacreditável.",
     precoProd: 330.00,
     img: "./images/Tenis/Air max 95 Neon/Air max 95 Neon (1).jpg",
     img2: "./images/Tenis/Air max 95 Neon/Air max 95 Neon (1).jpg",
@@ -40,7 +40,7 @@ export const catalogo = [{
 {
     id: 4,
     nomeProd: "Nike shox TL' Black",
-    descProd: "X",
+    descProd: "Leve sua atitude ao máximo no Nike Air Max Plus. uma experiência Air que oferece estabilidade e sustentação premium com um amortecimento inacreditável.",
     precoProd: 330.00,
     img: "./images/Tenis/Nike Shox TL Black/Nike Shox TL Black (2).jpg",
     img2: "./images/Tenis/Nike Shox TL Black/Nike Shox TL Black (2).jpg",
@@ -53,7 +53,7 @@ export const catalogo = [{
 {
     id: 5,
     nomeProd: "Air force 1 '07",
-    descProd: "X",
+    descProd: "Leve sua atitude ao máximo no Nike Air Max Plus. uma experiência Air que oferece estabilidade e sustentação premium com um amortecimento inacreditável.",
     precoProd: 365.00,
     img: "./images/Tenis/Air force 1 '07/Air force 1 07 (3).jpg", 
     img2: "./images/Tenis/Air force 1 '07/Air force 1 07 (3).jpg",
@@ -66,7 +66,7 @@ export const catalogo = [{
 {
     id: 6,
     nomeProd: "Air max plus Tn' Black and White",
-    descProd: "X",
+    descProd: "Leve sua atitude ao máximo no Nike Air Max Plus. uma experiência Air que oferece estabilidade e sustentação premium com um amortecimento inacreditável.",
     precoProd: 295.00,
     img: "./images/Tenis/Tn' 1 White and Black/Tn'1 White and Black (1).jpg", 
     img2: "./images/Tenis/Tn' 1 White and Black/Tn'1 White and Black (1).jpg",

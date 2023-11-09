@@ -3,7 +3,7 @@ import { catalogo } from "./script.js";
 // Produtos Home e ProdPage  home.js & produtos.js
 
 export function mostrarProducts(targetElement, home) {
-    catalogo.forEach((prod, i) => {
+    catalogo.forEach((prod) => {
         if (home && !prod.home) {
             return;
         }
@@ -106,7 +106,7 @@ export function carregarProduto(item){
 
 // Função para adicionar ao carrinho!
 
-export function add_carrinho(item){
+export function add_carrinho(item, id){
 
     let carrinho_compras = JSON.parse(localStorage.getItem('Cart'))
 
@@ -117,13 +117,21 @@ export function add_carrinho(item){
     const botaoComprar = document.querySelector('.button');
 
     botaoComprar.addEventListener('click', () => {
+    
+    // if(carrinho_compras.find(item => item.id == id && item.tamanho == tamanho)){
+    //     let index = carrinho_compras.findIndex(item => item.id)
+    //     carrinho_compras[index].quantidade += 1
+    //     LocalStorage.setItem('Cart', JSON.stringify(carrinho_compras))
+
 
     // Aqui fica a seleção do tamanho
 
         let tamanhoSelect = document.getElementById('tamanho');
         let tamanho = parseInt(tamanhoSelect.value);
 
-        let newItem = { ...item, tamanho };
+        let quantidade = 1
+
+        let newItem = { ...item, tamanho, quantidade};
 
         console.log(newItem);
         console.log(tamanho);
@@ -136,28 +144,44 @@ export function add_carrinho(item){
     // ESTUDAR
 
         localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
+
     });
+}
+
+export function remover_cart(carrinho_compras) {
+
+    let delbtns = document.querySelectorAll(".remove_cart");
+
+    delbtns.forEach(botao => botao.addEventListener('click', (event)=> {
+
+        let item = event.target.parentElement.parentElement
+        let index = carrinho_compras.findIndex(produto => produto.id == item.id)
+        console.log(index)
+        carrinho_compras.splice(index, 1)
+
+        localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
+    }))
 }
 
 export function productCart(carrinho_compras){
     carrinho_compras.forEach(item => {
-
-        let cartProd = `<div class="box">
+    let cartProd = `
+    <div class="box" data-item-id="${item.id}">
         <img src="${item.img}" alt="Fotos">
         <div class="content">
             <h3>${item.nomeProd}</h3>
             <h4>R$${item.precoProd.toFixed(2).replace('.', ',')}</h4>
             <h5>Tamanho: ${item.tamanho}</h5>
             <div class= "plusplus"> 
-                <p class="unit">Quantidade: <input type= "number" min="1" max="${item.stock}" value="1"></p>
-                <button id="remove_cart">Remover</button>
+                <p class="unit">Quantidade: <input type="number" min="1" max="${item.stock}" value="1"></p>
+                <button class="remove_cart">Remover</button>
             </div>
             <p class="btn-area">
                 <i class="stock"></i>
                 <span class="btn2">Disponíveis: ${item.stock} </span>
             </p>
         </div>
-    </div>`
+    </div>`;
 
     box_Products.innerHTML += cartProd;
 

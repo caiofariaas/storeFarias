@@ -688,7 +688,7 @@ section{
     margin-right: 5px;
 }
 
-#remove_cart{
+.remove_cart{
     padding: 0.7%;
     margin-bottom: 1%;
     border: none;
@@ -699,7 +699,7 @@ section{
     transition: all 0.5s;
 }
 
-#remove_cart:hover{
+.remove_cart:hover{
     background-color: #9e0808;
 }
 

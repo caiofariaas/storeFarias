@@ -160,6 +160,7 @@ export function remover_cart(carrinho_compras) {
         carrinho_compras.splice(index, 1)
 
         localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
+        
     }))
 }
 

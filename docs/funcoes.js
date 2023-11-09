@@ -26,56 +26,6 @@ export function mostrarProducts(targetElement, home) {
 
 // Cart - Cart.js
 
-let n = 3;
-
-export function productCart(){
-    for(let i = 0; i < n; i++){
-        let prod = catalogo[i]
-
-        let cartProd = `<div class="box">
-        <img src="${prod.img}" alt="Fotos">
-        <div class="content">
-            <h3>${prod.nomeProd}</h3>
-            <h4>R$${prod.precoProd.toFixed(2).replace('.', ',')}</h4>
-            <div class= "plusplus"> 
-                <p class="unit">Quantidade: <input type= "number" min="1" max="${prod.stock}" value="1"></p>
-                <button id="remove_cart">Remover</button>
-            </div>
-            <p class="btn-area">
-                <i class="stock"></i>
-                <span class="btn2">Disponíveis: ${prod.stock} </span>
-            </p>
-        </div>
-    </div>`
-
-    box_Products.innerHTML += cartProd;
-    }
-}
-
-// Total Carrinhos - Cart.js
-
-export function totalCart(){
-    let total = 0; 
-
-    for (let i = 0; i < n; i++) {
-        total += catalogo[i].precoProd;
-    }
-    let right_bar = document.getElementById('right_bar');
-
-    let cart_total = `
-        <div class="cart_total">
-            <p><span>Subtotal:</span> <span>R$${total.toFixed(2).replace('.', ',')}</span></p>
-            <hr>
-            <p><span>Entrega:</span> <span>R$0,00</span></p>
-            <hr>
-            <p><span>Descontos:</span> <span>R$0,00</span></p>
-            <hr>
-            <p><span>Total:</span><span>R$${total.toFixed(2).replace('.', ',')}</span></p>
-            <button class="btn_area">Finalizar Compra</button>
-        </div>`;
-
-    right_bar.innerHTML += cart_total;
-}
 
 // Produto único JS
 
@@ -129,16 +79,16 @@ export function carregarProduto(item){
         </div>
         <div class="tamanhos">
             <select id="tamanho">
-                <option value="35">35</option>
-                <option value="36">36</option>
-                <option value="37">37</option>
-                <option value="38">38</option>
-                <option value="39">39</option>
-                <option value="40">40</option>
-                <option value="41">41</option>
-                <option value="42">42</option>
-                <option value="43">43</option>
-                <option value="44">44</option>
+                <option class= "tamanhoos" value="35">35</option>
+                <option class= "tamanhoos" value="36">36</option>
+                <option class= "tamanhoos" value="37">37</option>
+                <option class= "tamanhoos" value="38">38</option>
+                <option class= "tamanhoos" value="39">39</option>
+                <option class= "tamanhoos" value="40">40</option>
+                <option class= "tamanhoos" value="41">41</option>
+                <option class= "tamanhoos" value="42">42</option>
+                <option class= "tamanhoos" value="43">43</option>
+                <option class= "tamanhoos" value="44">44</option>
               </select>
         </div>
         <div class="comprarr">
@@ -150,5 +100,92 @@ export function carregarProduto(item){
     </div>
 
 </div>`
+
     container.innerHTML = html
+}
+
+// Função para adicionar ao carrinho!
+
+export function add_carrinho(item){
+
+    let carrinho_compras = JSON.parse(localStorage.getItem('Cart'))
+
+    if (carrinho_compras == null){
+        carrinho_compras = []
+    }
+
+    const botaoComprar = document.querySelector('.button');
+
+    botaoComprar.addEventListener('click', () => {
+
+    // Aqui fica a seleção do tamanho
+
+        let tamanhoSelect = document.getElementById('tamanho');
+        let tamanho = parseInt(tamanhoSelect.value);
+
+        let newItem = { ...item, tamanho };
+
+        console.log(newItem);
+        console.log(tamanho);
+
+    // Push == Append na lista
+        
+        carrinho_compras.push(newItem);
+        console.log(carrinho_compras);
+
+    // ESTUDAR
+
+        localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
+    });
+}
+
+export function productCart(carrinho_compras){
+    carrinho_compras.forEach(item => {
+
+        let cartProd = `<div class="box">
+        <img src="${item.img}" alt="Fotos">
+        <div class="content">
+            <h3>${item.nomeProd}</h3>
+            <h4>R$${item.precoProd.toFixed(2).replace('.', ',')}</h4>
+            <h5>Tamanho: ${item.tamanho}</h5>
+            <div class= "plusplus"> 
+                <p class="unit">Quantidade: <input type= "number" min="1" max="${item.stock}" value="1"></p>
+                <button id="remove_cart">Remover</button>
+            </div>
+            <p class="btn-area">
+                <i class="stock"></i>
+                <span class="btn2">Disponíveis: ${item.stock} </span>
+            </p>
+        </div>
+    </div>`
+
+    box_Products.innerHTML += cartProd;
+
+    })
+}
+
+// Total Carrinhos - Cart.js
+
+export function totalCart(carrinho_compras){
+    let total = 0; 
+
+    carrinho_compras.forEach(item => {
+        total += item.precoProd;
+    })
+
+    let right_bar = document.getElementById('right_bar');
+
+    let cart_total = `
+        <div class="cart_total">
+            <p><span>Subtotal:</span> <span>R$${total.toFixed(2).replace('.', ',')}</span></p>
+            <hr>
+            <p><span>Entrega:</span> <span>R$0,00</span></p>
+            <hr>
+            <p><span>Descontos:</span> <span>R$0,00</span></p>
+            <hr>
+            <p><span>Total:</span><span>R$${total.toFixed(2).replace('.', ',')}</span></p>
+            <button class="btn_area">Finalizar Compra</button>
+        </div>`;
+
+    right_bar.innerHTML += cart_total;
 }

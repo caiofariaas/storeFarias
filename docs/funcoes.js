@@ -24,9 +24,6 @@ export function mostrarProducts(targetElement, home) {
     });
 }
 
-// Cart - Cart.js
-
-
 // Produto único JS
 
 export function handleClick(){
@@ -104,7 +101,7 @@ export function carregarProduto(item){
     container.innerHTML = html
 }
 
-// Função para adicionar ao carrinho!
+// Função para adicionar ao array 'Cart'!
 
 export function add_carrinho(item, id){
 
@@ -117,57 +114,32 @@ export function add_carrinho(item, id){
     const botaoComprar = document.querySelector('.button');
 
     botaoComprar.addEventListener('click', () => {
-    
-    // if(carrinho_compras.find(item => item.id == id && item.tamanho == tamanho)){
-    //     let index = carrinho_compras.findIndex(item => item.id)
-    //     carrinho_compras[index].quantidade += 1
-    //     LocalStorage.setItem('Cart', JSON.stringify(carrinho_compras))
-
-
-    // Aqui fica a seleção do tamanho
 
         let tamanhoSelect = document.getElementById('tamanho');
         let tamanho = parseInt(tamanhoSelect.value);
 
-        let quantidade = 1
 
-        let newItem = { ...item, tamanho, quantidade};
+        let newItem = { ...item, tamanho};
 
         console.log(newItem);
         console.log(tamanho);
-
-    // Push == Append na lista
         
         carrinho_compras.push(newItem);
         console.log(carrinho_compras);
-
-    // ESTUDAR
 
         localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
 
     });
 }
 
-export function remover_cart(carrinho_compras) {
-
-    let delbtns = document.querySelectorAll(".remove_cart");
-
-    delbtns.forEach(botao => botao.addEventListener('click', (event)=> {
-
-        let item = event.target.parentElement.parentElement
-        let index = carrinho_compras.findIndex(produto => produto.id == item.id)
-        console.log(index)
-        carrinho_compras.splice(index, 1)
-
-        localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
-        
-    }))
-}
+// Adiciona o produto ao carrinho de compras visualmente
 
 export function productCart(carrinho_compras){
+
     carrinho_compras.forEach(item => {
+
     let cartProd = `
-    <div class="box" data-item-id="${item.id}">
+    <div class="box">
         <img src="${item.img}" alt="Fotos">
         <div class="content">
             <h3>${item.nomeProd}</h3>
@@ -189,16 +161,40 @@ export function productCart(carrinho_compras){
     })
 }
 
+// Remover do carrinho
+
+export function remover_cart(carrinho_compras) {
+
+    let delbtns = document.querySelectorAll(".remove_cart ");
+
+    delbtns.forEach(botao => botao.addEventListener('click', (event)=> {
+
+        let item = event.target.parentElement.parentElement.parentElement
+
+        box_Products.removeChild(item)
+
+        let index = carrinho_compras.findIndex(produto => produto.id == item.id)
+
+        carrinho_compras.splice(index, 1)
+
+        localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
+
+        totalCart(carrinho_compras)
+    }))
+}
+
 // Total Carrinhos - Cart.js
 
-export function totalCart(carrinho_compras){
-    let total = 0; 
+export function totalCart(carrinho_compras) {
+    let total = 0;
 
     carrinho_compras.forEach(item => {
         total += item.precoProd;
-    })
+    });
 
     let right_bar = document.getElementById('right_bar');
+
+    right_bar.innerHTML = '';
 
     let cart_total = `
         <div class="cart_total">

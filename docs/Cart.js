@@ -9,8 +9,5 @@ if (carrinho_compras == null){
 
 productCart(carrinho_compras)
 remover_cart(carrinho_compras)
-
-
-
 totalCart(carrinho_compras)
 

@@ -184,6 +184,7 @@ export function remover_cart(carrinho_compras) {
         localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
 
         totalCart(carrinho_compras)
+
     }))
 }
 
@@ -219,15 +220,18 @@ export function totalCart(carrinho_compras) {
 
 const searchIcon = document.querySelector('.searchIcon')
 
-searchIcon.addEventListener('click', () =>{
+searchIcon.addEventListener('click', (e) =>{
+
+    e.preventDefault();
 
     let searchTerm = document.querySelector('#search-box2').value;
 
     console.log(searchTerm);
 
-    const produtosFiltrados = catalogo.filter(produto => produto.nomeProd.toLowerCase().includes(searchTerm.toLowerCase()));
+    let produtosFiltrados = catalogo.filter(produto => produto.nomeProd.toLowerCase().includes(searchTerm.toLowerCase()));
 
     document.querySelector('#search-box2').value = '';
 
     console.log(produtosFiltrados)
+
 });

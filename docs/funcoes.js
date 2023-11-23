@@ -103,7 +103,7 @@ export function carregarProduto(item){
 
 // Função para adicionar ao array 'Cart'!
 
-export function add_carrinho(item, id){
+export function add_carrinho(item){
 
     let carrinho_compras = JSON.parse(localStorage.getItem('Cart'))
 
@@ -139,7 +139,7 @@ export function productCart(carrinho_compras){
     carrinho_compras.forEach(item => {
 
     let cartProd = `
-    <div class="box">
+    <div class="box" id="${item.id}">
         <img src="${item.img}" alt="Fotos">
         <div class="content">
             <h3>${item.nomeProd}</h3>
@@ -171,11 +171,15 @@ export function remover_cart(carrinho_compras) {
 
         let item = event.target.parentElement.parentElement.parentElement
 
-        box_Products.removeChild(item)
+        console.log(item)
 
         let index = carrinho_compras.findIndex(produto => produto.id == item.id)
 
+        console.log(index)
+
         carrinho_compras.splice(index, 1)
+
+        box_Products.removeChild(item)
 
         localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
 
@@ -210,3 +214,20 @@ export function totalCart(carrinho_compras) {
 
     right_bar.innerHTML += cart_total;
 }
+
+// Barra de Busca
+
+const searchIcon = document.querySelector('.searchIcon')
+
+searchIcon.addEventListener('click', () =>{
+
+    let searchTerm = document.querySelector('#search-box2').value;
+
+    console.log(searchTerm);
+
+    const produtosFiltrados = catalogo.filter(produto => produto.nomeProd.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    document.querySelector('#search-box2').value = '';
+
+    console.log(produtosFiltrados)
+});

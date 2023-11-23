@@ -59,6 +59,12 @@ color: #c3c3c3;
     transition: all .42s ease;
 }
 
+.searchIcon{
+    background-color: rgb(12, 12, 12);
+    border: none;
+    cursor: pointer;
+}
+
 .navmenu a:hover{
     color: #ffffff;
 }
@@ -84,6 +90,16 @@ color: #c3c3c3;
 #search-box2{
     border: 1px solid black;
     border-radius: 10px;
+
+}
+
+/* Removendo o X padrão do input */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-clear-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
 }
 
 #search-box {

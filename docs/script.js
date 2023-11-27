@@ -8,7 +8,7 @@ export const catalogo = [{
     img3: "./images/Tenis/Tn' 1 Black and white/TN1 BLACK AND WHITE (3).jpg",
     img4: "./images/Tenis/Tn' 1 Black and white/TN1 BLACK AND WHITE (4).jpg",
     stock: 342,
-    filter: "Air max plus Tn",
+    filter: false,
     home: true
 },
 {
@@ -21,7 +21,7 @@ export const catalogo = [{
     img3: "./images/Tenis/Tn' 1 Chargers/TN Chargers (4).jpg",
     img4: "./images/Tenis/Tn' 1 Chargers/TN Chargers (3).jpg",
     stock: 431,
-    filter: "Air max plus Tn",
+    filter: false,
     home: false
 },
 {
@@ -34,7 +34,7 @@ export const catalogo = [{
     img3: "./images/Tenis/Air max 95 Neon/Air max 95 Neon (2).jpg",
     img4: "./images/Tenis/Air max 95 Neon/Air max 95 Neon (3).jpg",
     stock: 222,
-    filter: "Air max 95",
+    filter: false,
     home: true
 },
 {
@@ -47,7 +47,7 @@ export const catalogo = [{
     img3: "./images/Tenis/Nike Shox TL Black/Nike Shox TL Black (1).jpg",
     img4: "./images/Tenis/Nike Shox TL Black/Nike Shox TL Black (3).jpg",
     stock: 98,
-    filter: "Nike Shox",
+    filter: false,
     home: true
 },
 {
@@ -60,7 +60,7 @@ export const catalogo = [{
     img3: "./images/Tenis/Air force 1 '07/Air force 1 07 (2).jpg",
     img4: "./images/Tenis/Air force 1 '07/Air force 1 07 (1).jpg",
     stock: 984,
-    filter: "Air Force",
+    filter: false,
     home: true
 },
 {
@@ -73,7 +73,7 @@ export const catalogo = [{
     img3: "./images/Tenis/Tn' 1 White and Black/Tn'1 White and Black (2).jpg",
     img4: "./images/Tenis/Tn' 1 White and Black/Tn'1 White and Black (3).jpg",
     stock: 34,
-    filter: "Air max plus Tn",
+    filter: false,
     home: false
 }
 ]

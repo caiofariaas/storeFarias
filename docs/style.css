@@ -701,7 +701,7 @@ section{
     text-align: center;
 }
 
-.btn_area i{
+#btn_finalizar_compra i{
     margin-right: 5px;
 }
 
@@ -754,7 +754,7 @@ section{
     margin-right: 15px;
 }
 
-.btn_area{
+#btn_finalizar_compra{
     font-size: 17px;
     border: none;
     background-color: #4c4c4c;
@@ -767,7 +767,7 @@ section{
     transition: all 0.4s;
 }
 
-.btn_area:hover {
+#btn_finalizar_compra:hover {
     background-color: #165a00;
 }
 

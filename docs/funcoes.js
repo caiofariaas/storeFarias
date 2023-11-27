@@ -181,7 +181,7 @@ export function remover_cart(carrinho_compras) {
 
         localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
 
-        totalCart(carrinho_compras)
+        totalCart(carrinho_compras);
     }))
 }
 
@@ -207,41 +207,13 @@ export function totalCart(carrinho_compras) {
             <p><span>Descontos:</span> <span>R$0,00</span></p>
             <hr>
             <p><span>Total:</span><span>R$${total.toFixed(2).replace('.', ',')}</span></p>
-            <button type="submit" class="btn_area">Finalizar Compra</button>
+            <button type="submit" id="btn_finalizar_compra">Finalizar Compra</button>
         </div>`;
 
     right_bar.innerHTML += cart_total;
 }
 
-
-
-// Mostrar produto filtrado
-
-// export function mostrarProdFIltrados(produtosFiltrados) {
-
-//     produtosFiltrados.forEach(prod => {
-//         const products_grid = document.getElementById("products_grid");
-
-//         let cardProd = `
-//             <div class="row" id="${prod.id}">
-//                 <a href="produtoUnic.html"><img src="${prod.img}" id="${prod.id}"></a>
-//                 <div class="product-text">
-//                     <h5>New</h5>
-//                 </div>
-//                 <div class="preco">
-//                     <h4>${prod.nomeProd}</h4>
-//                     <p>R$${prod.precoProd.toFixed(2).replace('.', ',')}</p>
-//                 </div>
-//             </div>`;
-
-//         products_grid.innerHTML += cardProd;
-//     });
-
-// };
-
-
 // Barra de Busca
-
 
 export function searchBar(){
 
@@ -284,4 +256,18 @@ export function searchBar(){
 
 function isCurrentPage(pageName) {
     return window.location.href.indexOf(pageName) !== -1;
+}
+
+
+export function gerarPedido(carrinho_compras) {
+    const btn_finalizar = document.querySelector('#btn_finalizar_compra');
+
+    btn_finalizar.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        let carrinhoString = JSON.stringify(carrinho_compras);
+
+        localStorage.setItem('Pedidos', carrinhoString);
+
+    });
 }

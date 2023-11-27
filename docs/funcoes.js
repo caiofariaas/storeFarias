@@ -170,11 +170,9 @@ export function remover_cart(carrinho_compras) {
     delbtns.forEach(botao => botao.addEventListener('click', (event)=> {
 
         let item = event.target.parentElement.parentElement.parentElement
-
         console.log(item)
 
         let index = carrinho_compras.findIndex(produto => produto.id == item.id)
-
         console.log(index)
 
         carrinho_compras.splice(index, 1)
@@ -184,7 +182,6 @@ export function remover_cart(carrinho_compras) {
         localStorage.setItem('Cart', JSON.stringify(carrinho_compras))
 
         totalCart(carrinho_compras)
-
     }))
 }
 
@@ -225,13 +222,27 @@ searchIcon.addEventListener('click', (e) =>{
     e.preventDefault();
 
     let searchTerm = document.querySelector('#search-box2').value;
-
     console.log(searchTerm);
 
     let produtosFiltrados = catalogo.filter(produto => produto.nomeProd.toLowerCase().includes(searchTerm.toLowerCase()));
 
     document.querySelector('#search-box2').value = '';
-
     console.log(produtosFiltrados)
 
+ if (!isCurrentPage('produtos.html')) {
+
+// Transforma os produtos filtrados em uma string JSON para ser passada como parâmetro na URL
+
+        let produtosFiltradosString = encodeURIComponent(JSON.stringify(produtosFiltrados));
+
+// Redireciona para a nova página com a barra de consulta contendo os produtos filtrados
+
+        window.location.href = 'produtos.html?produtos=' + produtosFiltradosString;
+    }
 });
+
+// Função para verificar se já está na página de destino
+
+function isCurrentPage(pageName) {
+    return window.location.href.indexOf(pageName) !== -1;
+}

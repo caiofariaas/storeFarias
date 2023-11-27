@@ -207,7 +207,7 @@ export function totalCart(carrinho_compras) {
             <p><span>Descontos:</span> <span>R$0,00</span></p>
             <hr>
             <p><span>Total:</span><span>R$${total.toFixed(2).replace('.', ',')}</span></p>
-            <button class="btn_area">Finalizar Compra</button>
+            <button type="submit" class="btn_area">Finalizar Compra</button>
         </div>`;
 
     right_bar.innerHTML += cart_total;

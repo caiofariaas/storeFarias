@@ -821,3 +821,57 @@ section{
     margin-bottom: 0.5%;
     font-weight: 200;
 }
+
+.endereco-viacep{
+    border: 1px solid rgb(81, 80, 80);
+    border-radius: 15px;
+    max-width: 35%;
+    padding: 3%;
+    margin-top: 10%;
+    margin-left: 33%;
+    background-color: #888888;
+}
+
+.labelEnd{
+    color: #e7e7e7;
+    font-size: clamp(8px, 22px ,40px);
+    padding-bottom: 2%;
+    display: block;
+    font-weight: 200;
+    
+}
+
+.inputEnd{
+    border-radius: 5px;
+    border: none;
+    max-width: 60%;
+    max-height: 20%;
+    height: fit-content;
+    padding: 0.5vh;
+    background-color: #5b5b5b;
+    color: #f7f7f7;
+}
+
+.titleEnd{
+    color: #e7e7e7;
+    padding-bottom: 4%;
+    font-weight: 200;
+    text-align: center;
+}
+
+.enviarEnd{
+    border-radius: 5px;
+    border: none;
+    background-color: #0768c3;
+    color: white;
+    padding: 2%;
+    font-size: clamp(8px, 20px, 15px);
+    margin-left: 85%;
+    transition: all 0.4s;
+
+}
+
+.enviarEnd:hover{
+    background-color: rgb(7, 64, 131);
+    cursor: pointer;
+}

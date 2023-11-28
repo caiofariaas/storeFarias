@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farias Store</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Linkando Fontes -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script type="module" src="home.js" defer></script>
+    <link rel="icon" href="./images/favicon-32x32.png">
+
+</head>
+
+<body>
+    <!-- https://cdnjs.com/libraries/font-awesome -->
+    <!-- box icons -->
+    <!-- https://fonts.google.com/specimen/Inter?query=Inter -->
+
+    <header>
+        <div class="logo-name">
+            <a href="" class="logo"><img src="./images/logocopy.png" alt="Logomarca! FariasStore"></a>
+            <a href="index.html" class="name">Farias Store✨</a>
+        </div>
+
+        <ul class="navmenu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="contact2.html">Contatos</a></li>
+        </ul>
+
+        <div class="nav-icons">
+            <div class="busca">
+                <form action="" id="search-box">
+                    <input type="search" id="search-box2" placeholder="Buscar" >
+                    <button type="search" class="searchIcon" onclick="" ><i class='bx bx-search'></i></button>
+                </form>
+            </div>
+            <a href="login.html"><i class='bx bx-user'></i></a>
+            <a href="cart.html"><i class='bx bx-cart'></i></a>
+
+        </div>
+    </header>
+    <script>
+    
+        function limpa_formulário_cep() {
+                //Limpa valores do formulário de cep.
+                document.getElementById('rua').value=("");
+                document.getElementById('bairro').value=("");
+                document.getElementById('cidade').value=("");
+                document.getElementById('uf').value=("");
+                document.getElementById('ibge').value=("");
+        }
+    
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('rua').value=(conteudo.logradouro);
+                document.getElementById('bairro').value=(conteudo.bairro);
+                document.getElementById('cidade').value=(conteudo.localidade);
+                document.getElementById('uf').value=(conteudo.uf);
+                document.getElementById('ibge').value=(conteudo.ibge);
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+            
+        function pesquisacep(valor) {
+    
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+    
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+    
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+    
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+    
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('rua').value="...";
+                    document.getElementById('bairro').value="...";
+                    document.getElementById('cidade').value="...";
+                    document.getElementById('uf').value="...";
+                    document.getElementById('ibge').value="...";
+    
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+    
+                    //Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+    
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+    
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        };
+    
+        </script>
+
+<form class="endereco-viacep" method="get" action=".">
+    <h2 class="titleEnd"> Endereço</h2>
+    <label class="labelEnd">Cep:
+    <input class="inputEnd" name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+           onblur="pesquisacep(this.value);" /></label>
+    <label class="labelEnd">Rua:
+    <input class="inputEnd" name="rua" type="text" id="rua" size="40" /></label>
+    <label class="labelEnd">Bairro:
+    <input class="inputEnd" name="bairro" type="text" id="bairro" size="40" /></label>
+    <label class="labelEnd">Cidade:
+    <input class="inputEnd" name="cidade" type="text" id="cidade" size="40" /></label>
+    <label class="labelEnd">Estado:
+    <input class="inputEnd" name="uf" type="text" id="uf" size="1" /></label>
+    <label class="labelEnd">IBGE:
+    <input class="inputEnd" name="ibge" type="text" id="ibge" size="5" /></label>
+    <button class="enviarEnd">Finalizar</button>
+  </form>
+
+    <section class="footer">
+        <div class="footer-all">
+            <div>
+                <h3>Ajuda</h3>
+                <br>
+                <p>Dúvidas Gerais</p>
+            </div>
+            <div>
+                <h3>Contato</h3>
+                <br>
+                <p>caio.farias077@gmail.com</p>
+                <p>(19)998240943</p>
+            </div>
+            <div>
+                <h3>Sobre nós</h3>
+                <br>
+                <a href="sobrenos.html" class="sobre-nos">História da loja</a>
+            </div>
+            <div>
+                <h3>Redes Sociais</h3>
+                <br>
+                <i class='bx bxl-instagram'>storefariaas</i>
+            </div>
+        </div>
+</section>
+</body>
+</html>

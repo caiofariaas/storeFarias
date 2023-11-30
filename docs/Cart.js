@@ -6,11 +6,11 @@ if (carrinho_compras == null){
     carrinho_compras = []
 }
 
-productCart(carrinho_compras)
+productCart(carrinho_compras);
 
-remover_cart(carrinho_compras)
+remover_cart(carrinho_compras);
 
-totalCart(carrinho_compras)
+totalCart(carrinho_compras);
 
 gerarPedido(carrinho_compras);
 searchBar();

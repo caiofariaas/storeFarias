@@ -1,16 +1,22 @@
-let data = JSON.parse(localStorage.getItem("Pedidos")) || [];
+let data = JSON.parse(localStorage.getItem("pedidos"));
+
 const resultadoDiv = document.getElementById('resultado');
+const tbodyTable = document.querySelector('.tbodyTable');
 
-console.log(data);
+data.forEach(pedido => {
+    // Concatena os nomes dos itens em uma string separada por vírgula
+    const nomesItens = pedido.itens.map(item => item.nomeProd).join(', ');
 
-data.forEach((pedido, index) => {
-    const pedidoDiv = document.createElement('div');
-    pedidoDiv.innerHTML = `<h2 style="color: #c7c7c7;">Detalhes do Pedido ${pedido.id}:</h2><ul></ul>`;
+    // Cria um elemento de tabela para cada pedido
+    let pedidoRow = document.createElement('tr');
+    pedidoRow.innerHTML = `<th scope="row">${pedido.id}</th>
+                           <td>${nomesItens}</td>
+                           <td>R$${calcularTotalPedido(pedido.itens).toFixed(2).replace('.', ',')}</td>`;
 
-    const itemDiv = document.createElement('li');
-    itemDiv.innerHTML = `<p style="color: #fff;">Título: ${pedido.nomeProd}</p><p style="color: #c7c7c7;">Preço: $${pedido.precoProd.toFixed(2)}</p>`;
-    
-    pedidoDiv.querySelector('ul').appendChild(itemDiv);
-
-    resultadoDiv.appendChild(pedidoDiv);
+    // Adiciona o elemento do pedido à tabela
+    tbodyTable.appendChild(pedidoRow);
 });
+
+function calcularTotalPedido(itens) {
+    return itens.reduce((total, item) => total + item.precoProd, 0);
+}

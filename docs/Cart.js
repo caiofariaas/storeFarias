@@ -13,4 +13,5 @@ remover_cart(carrinho_compras);
 totalCart(carrinho_compras);
 
 gerarPedido(carrinho_compras);
+
 searchBar();

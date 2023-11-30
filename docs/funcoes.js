@@ -258,15 +258,35 @@ function isCurrentPage(pageName) {
     return window.location.href.indexOf(pageName) !== -1;
 }
 
-
 export function gerarPedido(carrinho_compras) {
-    const btn_finalizar = document.querySelector('#btn_finalizar_compra');
+    let finalizar = document.querySelector("#btn_finalizar_compra");
 
-    btn_finalizar.addEventListener('click', (e) => {
+    finalizar.addEventListener('click', (e) => {
         e.preventDefault();
 
-        let carrinhoString = JSON.stringify(carrinho_compras);
+        // Carrega os pedidos existentes do localStorage
+        let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
 
-        localStorage.setItem('Pedidos', carrinhoString);
+        // Calcula o próximo código de pedido
+        let codPedido = pedidos.length + 1;
+
+        // Cria o novo pedido
+        let pedido = {
+            itens: carrinho_compras,
+            id: codPedido
+        };
+
+        // Adiciona o novo pedido à lista existente
+        pedidos.push(pedido);
+
+        // Atualiza o localStorage com a lista completa de pedidos
+        localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
+        alert("Pedido finalizado");
+
+        localStorage.removeItem("Cart");
+        localStorage.removeItem("prodID");
+
+        location.reload();
     });
 }

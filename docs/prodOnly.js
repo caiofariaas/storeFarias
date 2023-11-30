@@ -1,9 +1,8 @@
 import { catalogo } from "./script.js";
 import { carregarProduto, findProduct, add_carrinho, searchBar} from "./funcoes.js";
 
-let carrinho_compras = JSON.parse(localStorage.getItem('Cart'))
-
 let ID = localStorage.getItem('prodID')
+
 let item = findProduct(catalogo,ID)
 const prods = document.querySelector(".flex-box")
 

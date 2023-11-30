@@ -78,6 +78,6 @@ export const catalogo = [{
 }
 ]
 
-// seleção de imagens principais
+// Catalogo
 
   

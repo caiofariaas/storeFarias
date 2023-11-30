@@ -268,6 +268,5 @@ export function gerarPedido(carrinho_compras) {
         let carrinhoString = JSON.stringify(carrinho_compras);
 
         localStorage.setItem('Pedidos', carrinhoString);
-
     });
 }
